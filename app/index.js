@@ -2,11 +2,13 @@ import React from 'react';
 import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import App from './components/App';
-import { configureStore, history } from './store/configureStore';
+import rootSaga from './sagas';
+import { configureStore, history, reduxSaga } from './store/configureStore';
 
 import './app.global.css';
 
 const store = configureStore();
+reduxSaga.run(rootSaga);
 
 render(
   <AppContainer>

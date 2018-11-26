@@ -1,12 +1,12 @@
 // @flow
+import * as id from '../actions/id';
 import type { Action } from '../types';
-import * as Actions from './actions';
 
 export default function counter(state: number = 0, action: Action) {
   switch (action.type) {
-    case Actions.INCREMENT_COUNTER:
+    case id.kIncrementCounter:
       return state + 1;
-    case Actions.DECREMENT_COUNTER:
+    case id.kDecrementCounter:
       return state - 1;
     default:
       return state;

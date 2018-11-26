@@ -1,23 +1,29 @@
 import { createStore, applyMiddleware, compose } from 'redux';
-import thunk from 'redux-thunk';
+import reduxThunk from 'redux-thunk';
+import createSagaMiddleware from 'redux-saga'
 import { createHashHistory } from 'history';
-import { routerMiddleware, routerActions } from 'connected-react-router';
+import { routerMiddleware } from 'connected-react-router';
 import { createLogger } from 'redux-logger';
-import createRootReducer from '../components/reducers';
-import * as counterActions from '../components/counter/actions';
-import type { counterStateType } from '../components/types';
 
+import createRootReducer from '../reducers';
+import actionCreators from '../actions';
+
+import type { counterStateType } from '../types';
+
+const reduxSaga = createSagaMiddleware();
 const history = createHashHistory();
-
 const rootReducer = createRootReducer(history);
 
 const configureStore = (initialState?: counterStateType) => {
   // Redux Configuration
   const middleware = [];
   const enhancers = [];
-
+  
   // Thunk Middleware
-  middleware.push(thunk);
+  middleware.push(reduxThunk);
+  
+    // Saga Middleware
+    middleware.push(reduxSaga);
 
   // Logging Middleware
   const logger = createLogger({
@@ -33,12 +39,6 @@ const configureStore = (initialState?: counterStateType) => {
   // Router Middleware
   const router = routerMiddleware(history);
   middleware.push(router);
-
-  // Redux DevTools Configuration
-  const actionCreators = {
-    ...counterActions,
-    ...routerActions
-  };
   
   // If Redux DevTools Extension is installed use it, otherwise use Redux compose
   /* eslint-disable no-underscore-dangle */
@@ -59,13 +59,13 @@ const configureStore = (initialState?: counterStateType) => {
 
   if (module.hot) {
     module.hot.accept(
-      '../components/reducers',
+      '../reducers',
       // eslint-disable-next-line global-require
-      () => store.replaceReducer(require('../components/reducers').default)
+      () => store.replaceReducer(require('../reducers').default)
     );
   }
 
   return store;
 };
 
-export default { configureStore, history };
+export default { configureStore, history, reduxSaga };

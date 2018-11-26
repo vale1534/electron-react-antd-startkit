@@ -5,7 +5,7 @@ import { ConnectedRouter } from 'connected-react-router';
 
 import MainLayout from './MainLayout';
 import { routes } from './constants';
-import type { Store } from './types';
+import type { Store } from '../types';
 
 type Props = {
   store: Store,

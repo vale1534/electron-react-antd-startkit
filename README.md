@@ -1,6 +1,8 @@
 ## electron-react-antd-startkit
 
-构建 electron-react-antd-startkit 应用。
+构建 Electron + React + AntD 应用，同时应用了 Redux、Thunk、Saga 工具包。
+
+工具链有点复杂，Flow 静态类型检查是个负担，但还能用。
 
 ### 引入 AntD 界面包
 
@@ -25,5 +27,3 @@ yarn add -D antd less
 ```
 "less": "lessc --js ./app/antd-styles/antd-theme.less ./app/antd-styles/antd-theme.css"
 ```
-
-### 开发模式运行
