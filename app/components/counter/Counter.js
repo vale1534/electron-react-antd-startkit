@@ -1,8 +1,9 @@
 // @flow
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+
+import { routes } from '../constants';
 import styles from './Counter.css';
-import routes from '../constants/routes';
 
 type Props = {
   increment: () => void,
@@ -12,7 +13,7 @@ type Props = {
   counter: number
 };
 
-export default class Counter extends Component<Props> {
+class Counter extends Component<Props> {
   props: Props;
 
   render() {
@@ -23,6 +24,7 @@ export default class Counter extends Component<Props> {
       decrement,
       counter
     } = this.props;
+
     return (
       <div>
         <div className={styles.backButton} data-tid="backButton">
@@ -71,3 +73,5 @@ export default class Counter extends Component<Props> {
     );
   }
 }
+
+export default Counter;
