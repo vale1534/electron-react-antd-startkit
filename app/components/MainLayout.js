@@ -6,7 +6,6 @@ import type { Match, Location } from 'react-router';
 import { NavLink } from 'react-router-dom';
 
 import { routes } from './constants';
-import Counter from './counter';
 import NewCounter from './NewCounter';
 
 const { Sider, Content } = Layout;
@@ -51,9 +50,6 @@ class MainLayout extends React.Component<Props> {
             <Menu.Item key={routes.HOME}>
               <Link icon="home" to={routes.HOME} text="Home" />
             </Menu.Item>
-            <Menu.Item key={routes.COUNTER}>
-              <Link icon="rocket" to={routes.COUNTER} text="Counter" />
-            </Menu.Item>
             <Menu.Item key={routes.NEW_COUNTER}>
               <Link icon="rocket" to={routes.NEW_COUNTER} text="New Counter" />
             </Menu.Item>
@@ -62,7 +58,6 @@ class MainLayout extends React.Component<Props> {
         <Layout>
           <Content style={{ margin: '0 16px' }}>
             <Switch>
-              <Route exact path={routes.COUNTER} component={Counter} />
               <Route exact path={routes.NEW_COUNTER} component={NewCounter} />
               <Route
                 exact

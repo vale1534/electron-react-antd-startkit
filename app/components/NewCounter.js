@@ -4,7 +4,8 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Button, Row, Col } from 'antd';
 
-import * as Actions from './counter/actions';
+import * as counterActions from '../actions/counter';
+import type { Dispatch } from '../types';
 
 const styles = {
   col: {
@@ -15,10 +16,10 @@ const styles = {
 };
 
 type Props = {
-  increment: () => void,
-  incrementIfOdd: () => void,
-  incrementAsync: () => void,
-  decrement: () => void,
+  increment: () => any,
+  incrementIfOdd: () => any,
+  incrementAsync: () => any,
+  decrement: () => any,
   counter: number
 };
 
@@ -28,9 +29,9 @@ class NewCounter extends Component<Props> {
   render() {
     const {
       increment,
+      decrement,
       incrementIfOdd,
       incrementAsync,
-      decrement,
       counter
     } = this.props;
 
@@ -57,17 +58,13 @@ class NewCounter extends Component<Props> {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    counter: state.counter
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators(Actions, dispatch);
-}
-
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+  state => {
+    return {
+      counter: state.counter
+    };
+  },
+  (dispatch: Dispatch) => {
+    return bindActionCreators(counterActions, dispatch);
+  }
 )(NewCounter);

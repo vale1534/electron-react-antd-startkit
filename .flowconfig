@@ -4,10 +4,12 @@
 <PROJECT_ROOT>/app/dist/.*
 <PROJECT_ROOT>/resources/.*
 <PROJECT_ROOT>/node_modules/webpack-cli
+<PROJECT_ROOT>/node_modules/antd
 <PROJECT_ROOT>/release/.*
 <PROJECT_ROOT>/dll/.*
 <PROJECT_ROOT>/release/.*
 <PROJECT_ROOT>/git/.*
+<PROJECT_ROOT>/flow-typed/npm/antd*
 
 [include]
 
