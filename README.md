@@ -6,6 +6,21 @@
 
 ![11](https://user-images.githubusercontent.com/11177691/49055389-5b5e6680-f232-11e8-84d9-f28bcb053abe.JPG)
 
+### 起步方法
+
+克隆项目：
+
+```
+git clone https://github.com/wenris/electron-react-antd-startkit.git project-name
+```
+
+推荐中国国内用户使用 `taobao.org` 源，依赖包下载：
+
+```
+set ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/"
+yarn --registry=http://registry.npm.taobao.org
+```
+
 ### 开发常用命令
 
 Flow 静态类型检查：`yarn flow` ；
@@ -16,13 +31,15 @@ Flow 静态类型检查：`yarn flow` ；
 
 ### 怎么加入 AntD 包的？
 
+添加 `antd` 与 `less` 包：
+
 ```
 yarn add -D antd less
 ```
 
 增加 `app/antd-styles/antd-theme.less` 文件，内容如下：
 
-```
+```less
 @import "node_modules/antd/lib/style/index.less";
 @import "node_modules/antd/lib/style/components.less";
 
