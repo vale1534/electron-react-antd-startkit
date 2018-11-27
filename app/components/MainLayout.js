@@ -5,7 +5,7 @@ import { Switch, Route, withRouter } from 'react-router';
 import type { Match, Location } from 'react-router';
 import { NavLink } from 'react-router-dom';
 
-import { routes } from './constants';
+import * as routes from './routes';
 import NewCounter from './NewCounter';
 
 const { Sider, Content } = Layout;
@@ -47,21 +47,21 @@ class MainLayout extends React.Component<Props> {
         <Sider style={styles.sider}>
           <div className="logo" />
           <Menu selectedKeys={[location.pathname]}>
-            <Menu.Item key={routes.HOME}>
-              <Link icon="home" to={routes.HOME} text="Home" />
+            <Menu.Item key={routes.k_home}>
+              <Link icon="home" to={routes.k_home} text="Home" />
             </Menu.Item>
-            <Menu.Item key={routes.NEW_COUNTER}>
-              <Link icon="rocket" to={routes.NEW_COUNTER} text="New Counter" />
+            <Menu.Item key={routes.k_counter}>
+              <Link icon="rocket" to={routes.k_counter} text="New Counter" />
             </Menu.Item>
           </Menu>
         </Sider>
         <Layout>
           <Content style={{ margin: '0 16px' }}>
             <Switch>
-              <Route exact path={routes.NEW_COUNTER} component={NewCounter} />
+              <Route exact path={routes.k_counter} component={NewCounter} />
               <Route
                 exact
-                path={routes.HOME}
+                path={routes.k_home}
                 render={({ match }) => (
                   <>
                     <h2>Home</h2>

@@ -1,45 +1,19 @@
+// @noflow
 import { createStore, applyMiddleware, compose } from 'redux';
-import reduxThunk from 'redux-thunk';
-import createSagaMiddleware from 'redux-saga'
-import { createHashHistory } from 'history';
-import { routerMiddleware } from 'connected-react-router';
 import { createLogger } from 'redux-logger';
 
-import createRootReducer from '../reducers';
 import actionCreators from '../actions';
 
-import type { counterStateType } from '../types';
-
-const reduxSaga = createSagaMiddleware();
-const history = createHashHistory();
-const rootReducer = createRootReducer(history);
-
-const configureStore = (initialState?: counterStateType) => {
-  // Redux Configuration
-  const middleware = [];
-  const enhancers = [];
-  
-  // Thunk Middleware
-  middleware.push(reduxThunk);
-  
-    // Saga Middleware
-    middleware.push(reduxSaga);
-
-  // Logging Middleware
-  const logger = createLogger({
-    level: 'info',
-    collapsed: true
-  });
-
+function configureStore(rootReducer: any, initialState: any, middlewares: any) {
   // Skip redux logs in console during the tests
   if (process.env.NODE_ENV !== 'test') {
-    middleware.push(logger);
+    const logger = createLogger({
+      level: 'info',
+      collapsed: true
+    });
+    middlewares.push(logger);
   }
 
-  // Router Middleware
-  const router = routerMiddleware(history);
-  middleware.push(router);
-  
   // If Redux DevTools Extension is installed use it, otherwise use Redux compose
   /* eslint-disable no-underscore-dangle */
   const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
@@ -48,14 +22,13 @@ const configureStore = (initialState?: counterStateType) => {
         actionCreators
       })
     : compose;
-  /* eslint-enable no-underscore-dangle */
-
-  // Apply Middleware & Compose Enhancers
-  enhancers.push(applyMiddleware(...middleware));
-  const enhancer = composeEnhancers(...enhancers);
 
   // Create Store
-  const store = createStore(rootReducer, initialState, enhancer);
+  const store = createStore(
+    rootReducer,
+    initialState,
+    composeEnhancers(applyMiddleware(...middlewares))
+  );
 
   if (module.hot) {
     module.hot.accept(
@@ -66,6 +39,6 @@ const configureStore = (initialState?: counterStateType) => {
   }
 
   return store;
-};
+}
 
-export default { configureStore, history, reduxSaga };
+export default configureStore;
