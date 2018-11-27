@@ -4,6 +4,8 @@
 
 工具链有点复杂，Flow 静态类型检查是个负担，少些关注工具链，多花些时间写实际代码。
 
+![11](https://user-images.githubusercontent.com/11177691/49055389-5b5e6680-f232-11e8-84d9-f28bcb053abe.JPG)
+
 ### 开发常用命令
 
 Flow 静态类型检查：`yarn flow` ；
