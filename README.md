@@ -2,9 +2,17 @@
 
 构建 Electron + React + AntD 应用，同时应用了 Redux、Thunk、Saga 工具包。
 
-工具链有点复杂，Flow 静态类型检查是个负担，但还能用。
+工具链有点复杂，Flow 静态类型检查是个负担，少些关注工具链，多些关注业务代码。
 
-### 引入 AntD 界面包
+### 开发常用命令
+
+Flow 静态类型检查：`yarn flow` ；
+
+运行热加载开发模式应用程序：`yarn dev`；
+
+其他详见 `packages.json` 文件。
+
+### 怎么加入 AntD 包的？
 
 ```
 yarn add -D antd less
