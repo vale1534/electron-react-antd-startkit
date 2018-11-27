@@ -18,7 +18,7 @@ Flow 静态类型检查：`yarn flow` ；
 yarn add -D antd less
 ```
 
-增加 app/antd-styles/antd-theme.less 文件，内容如下：
+增加 `app/antd-styles/antd-theme.less` 文件，内容如下：
 
 ```
 @import "node_modules/antd/lib/style/index.less";
@@ -28,10 +28,16 @@ yarn add -D antd less
 // @primary-color : #f8900f;
 ```
 
-这里可以对 AntD 进行样式定制，但将 less 编译整合到现有的配置不太方便，已有 scss 编译器了，所以手动编译再引入到 app.global.css 中。
-
-因此在 package.json 增加下面 less 编译指令：
+在 `package.json` 增加下面 `less` 编译指令：
 
 ```
 "less": "lessc --js ./app/antd-styles/antd-theme.less ./app/antd-styles/antd-theme.css"
 ```
+
+定制好 AntD 主题，手动将 `antd-theme.less` 转译成 `antd-theme.css` 文件后，引入到 `app.global.css` 样式中。
+
+再也不要去折腾在工具链中引入 less 支持了，毫无意义。
+
+### 为什么 Thunk 与 Saga 共用？
+
+因为两者不冲突，优劣势互补，提供了最大的设计弹性。
