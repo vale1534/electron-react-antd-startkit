@@ -60,3 +60,24 @@ yarn add -D antd less
 ### 为什么 Thunk 与 Saga 共用？
 
 因为两者不冲突，优劣势互补，提供了最大的设计弹性。
+
+### 关于样式表
+
+暂且支持 css 和 scss ，默认导入以 [css-module](https://github.com/css-modules/css-modules) 方式导入，除非文件名以 `*.global.css` 或 `*.global.scss` 。在样式表中，除了以 `:global` 修饰的选择类名都会加以本地命名，比如：
+
+```css
+.local-class { ... }
+:global(.other-class) { ... }
+```
+
+`local-class` 将会重写命名，`other-class` 不会，在 js 代码中使用如下：
+
+```jsx
+import styles from 'mycomponent.css';
+
+function MyComponent(({props}) => {
+  return (<div className={styles.someClass}/>
+    ...
+  <div>);
+});
+```
