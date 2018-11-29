@@ -75,7 +75,7 @@ yarn add -D antd less
 ```jsx
 import styles from 'mycomponent.css';
 
-function MyComponent(({props}) => {
+function MyComponent((props) => {
   return (<div className={styles.someClass}/>
     ...
   <div>);
