@@ -2,11 +2,11 @@
 
 构建 Electron + React + AntD 应用，同时应用了 Redux、Thunk、Saga 工具包。
 
-工具链有点复杂，Flow 静态类型检查是个负担 ，少些关注工具链，多花些时间写实际代码。
+工具链有点复杂，~~Flow 静态类型检查是个负担~~ ，少些关注工具链，多花些时间写实际代码。
+
+**Flow 工具已移除，优化 ESLint 代码检查，用好 Jest 测试工具。**
 
 ![11](https://user-images.githubusercontent.com/11177691/49055389-5b5e6680-f232-11e8-84d9-f28bcb053abe.JPG)
-
-**Flow 工具已移除**
 
 ### 起步方法
 
@@ -26,7 +26,7 @@ yarn install --registry=http://registry.npm.taobao.org
 
 ### 开发常用命令
 
-Flow 静态类型检查：`yarn flow` ；
+~~Flow 静态类型检查：`yarn flow` ；~~
 
 运行热加载开发模式应用程序：`yarn dev`；
 
