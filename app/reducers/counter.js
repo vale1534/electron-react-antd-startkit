@@ -1,4 +1,3 @@
-// @flow
 import * as defs from '../actions/defs';
 
 export default function counter(state = 0, action) {

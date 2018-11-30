@@ -1,4 +1,3 @@
-// @flow
 const initialStore = {
   counter: 8
 };

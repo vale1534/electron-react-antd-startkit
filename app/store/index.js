@@ -1,4 +1,3 @@
-// @flow
 import reduxThunk from 'redux-thunk';
 import createSagaMiddleware from 'redux-saga';
 import { createHashHistory } from 'history';

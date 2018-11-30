@@ -1,4 +1,3 @@
-// @flow
 import React from 'react';
 import { Layout, Menu, Icon } from 'antd';
 import { Switch, Route, withRouter } from 'react-router';

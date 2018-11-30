@@ -3437,6 +3437,12 @@ a.ant-btn-sm {
 .ant-carousel .slick-list.dragging {
   cursor: pointer;
 }
+.ant-carousel .slick-list .slick-slide {
+  pointer-events: none;
+}
+.ant-carousel .slick-list .slick-slide.slick-active {
+  pointer-events: auto;
+}
 .ant-carousel .slick-slider .slick-track,
 .ant-carousel .slick-slider .slick-list {
   transform: translate3d(0, 0, 0);
@@ -15079,8 +15085,12 @@ span.ant-radio + * {
 }
 .ant-switch-loading,
 .ant-switch-disabled {
-  pointer-events: none;
+  cursor: not-allowed;
   opacity: 0.4;
+}
+.ant-switch-loading *,
+.ant-switch-disabled * {
+  cursor: not-allowed;
 }
 @keyframes AntSwitchSmallLoadingCircle {
   0% {
@@ -16555,6 +16565,7 @@ tr.ant-table-expanded-row td > .ant-table-wrapper {
   left: -2px;
 }
 .ant-time-picker-panel-input {
+  width: 100%;
   margin: 0;
   padding: 0;
   border: 0;
