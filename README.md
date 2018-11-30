@@ -1,5 +1,8 @@
 ## electron-react-antd-startkit
 
+[![Dependency Status](https://david-dm.org/wenris/electron-react-antd-startkit/dev-status.svg?style=flat-square)](https://david-dm.org/wenris/electron-react-antd-startkit)
+[![MIT Licensed](https://img.shields.io/badge/License-MIT-blue.svg?style=flat)](https://opensource.org/licenses/MIT)
+
 构建 Electron + React + AntD 应用，同时应用了 Redux、Thunk、Saga 工具包。
 
 工具链有点复杂，~~Flow 静态类型检查是个负担~~ ，少些关注工具链，多花些时间写实际代码。
