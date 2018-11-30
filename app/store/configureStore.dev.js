@@ -4,7 +4,7 @@ import { createLogger } from 'redux-logger';
 
 import actionCreators from '../actions';
 
-function configureStore(rootReducer: any, initialState: any, middlewares: any) {
+function configureStore(rootReducer, initialState, middlewares) {
   // Skip redux logs in console during the tests
   if (process.env.NODE_ENV !== 'test') {
     const logger = createLogger({

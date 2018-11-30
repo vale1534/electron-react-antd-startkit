@@ -1,9 +1,9 @@
-// @flow
-import type {Dispatch, GetState} from '../types';
 import * as defs from './defs';
 
 export function increment() {
-  return { type: defs.kIncrementCounter };
+  return {
+    type: defs.kIncrementCounter
+  };
 }
 
 export function decrement() {
@@ -19,7 +19,7 @@ export function incrementAsync() {
 }
 
 export function incrementIfOdd() {
-  return (dispatch: Dispatch, getState: GetState) => {
+  return (dispatch, getState) => {
     const { counter } = getState();
     if (counter % 2 === 0) return;
     dispatch(increment());

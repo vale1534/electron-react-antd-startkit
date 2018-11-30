@@ -22,8 +22,7 @@ const reduxSaga = createSagaMiddleware();
 const middlewares = [reduxThunk, reduxSaga, router];
 
 const store = configureStore(rootReducer, initialState, middlewares);
-const dispatch = store.dispatch;
-const action = (type: string) => dispatch({ type });
+const action = (type) => store.dispatch({ type });
 
 reduxSaga.run(rootSaga);
 export { store, action, history };

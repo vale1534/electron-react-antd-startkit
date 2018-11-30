@@ -6,7 +6,6 @@ import { Button, Row, Col } from 'antd';
 import { action } from '../store';
 import * as counterActions from '../actions/counter';
 import * as defs from '../actions/defs';
-import type { Dispatch } from '../types';
 
 const styles = {
   col: {
@@ -16,17 +15,7 @@ const styles = {
   }
 };
 
-type Props = {
-  increment: () => any,
-  incrementIfOdd: () => any,
-  incrementAsync: () => any,
-  decrement: () => any,
-  counter: number
-};
-
-class NewCounter extends Component<Props> {
-  props: Props;
-
+class NewCounter extends Component {
   render() {
     const {
       increment,
@@ -74,12 +63,8 @@ class NewCounter extends Component<Props> {
 }
 
 export default connect(
-  state => {
-    return {
+  state => ({
       counter: state.counter
-    };
-  },
-  (dispatch: Dispatch) => {
-    return bindActionCreators(counterActions, dispatch);
-  }
+    }),
+  (dispatch) => bindActionCreators(counterActions, dispatch)
 )(NewCounter);

@@ -2,7 +2,6 @@
 import React from 'react';
 import { Layout, Menu, Icon } from 'antd';
 import { Switch, Route, withRouter } from 'react-router';
-import type { Match, Location } from 'react-router';
 import { NavLink } from 'react-router-dom';
 
 import * as routes from './routes';
@@ -32,14 +31,7 @@ const Link = props => (
   </>
 );
 
-type Props = {
-  match: Match,
-  location: Location
-};
-
-class MainLayout extends React.Component<Props> {
-  props: Props;
-
+class MainLayout extends React.Component {
   render() {
     const { location } = this.props;
     return (

@@ -1,7 +1,6 @@
-// @flow
 import { createStore, applyMiddleware } from 'redux';
 
-function configureStore(rootReducer: any, initialState: any, middlewares: any) {
+function configureStore(rootReducer, initialState, middlewares) {
   return createStore(
     rootReducer,
     initialState,

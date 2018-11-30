@@ -2,9 +2,11 @@
 
 构建 Electron + React + AntD 应用，同时应用了 Redux、Thunk、Saga 工具包。
 
-工具链有点复杂，Flow 静态类型检查是个负担，少些关注工具链，多花些时间写实际代码。
+工具链有点复杂，Flow 静态类型检查是个负担 ，少些关注工具链，多花些时间写实际代码。
 
 ![11](https://user-images.githubusercontent.com/11177691/49055389-5b5e6680-f232-11e8-84d9-f28bcb053abe.JPG)
+
+**Flow 工具已移除**
 
 ### 起步方法
 
@@ -17,8 +19,9 @@ git clone https://github.com/wenris/electron-react-antd-startkit.git project-nam
 推荐中国国内用户使用 `taobao.org` 源，依赖包下载：
 
 ```
-set ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/"
-yarn --registry=http://registry.npm.taobao.org
+set SASS_BINARY_SITE=https://npm.taobao.org/mirrors/node-sass/
+set ELECTRON_MIRROR=https://npm.taobao.org/mirrors/electron/
+yarn install --registry=http://registry.npm.taobao.org
 ```
 
 ### 开发常用命令
