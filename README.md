@@ -1,6 +1,6 @@
 ## electron-react-antd-startkit
 
-[![Dependency Status](https://david-dm.org/wenris/electron-react-antd-startkit/dev-status.svg?style=flat-square)](https://david-dm.org/wenris/electron-react-antd-startkit)
+[![Dependency Status](https://david-dm.org/wenris/electron-react-antd-startkit/dev-status.svg)](https://david-dm.org/wenris/electron-react-antd-startkit)
 [![MIT Licensed](https://img.shields.io/badge/License-MIT-blue.svg?style=flat)](https://opensource.org/licenses/MIT)
 
 构建 Electron + React + AntD 应用，同时应用了 Redux、Thunk、Saga 工具包。
@@ -82,7 +82,7 @@ yarn add -D antd less
 import styles from 'mycomponent.css';
 
 function MyComponent((props) => {
-  return (<div className={styles.someClass}/>
+  return (<div className={styles["local-class"}/>
     ...
   <div>);
 });
