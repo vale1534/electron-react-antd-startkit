@@ -1,5 +1,6 @@
 ## electron-react-antd-startkit
 
+[![Dependency Status](https://david-dm.org/wenris/electron-react-antd-startkit/status.svg)](https://david-dm.org/wenris/electron-react-antd-startkit)
 [![Dependency Status](https://david-dm.org/wenris/electron-react-antd-startkit/dev-status.svg)](https://david-dm.org/wenris/electron-react-antd-startkit)
 [![MIT Licensed](https://img.shields.io/badge/License-MIT-blue.svg?style=flat)](https://opensource.org/licenses/MIT)
 
