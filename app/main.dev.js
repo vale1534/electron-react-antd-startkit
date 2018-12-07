@@ -12,7 +12,9 @@
 import { app, BrowserWindow } from 'electron';
 import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
-import MenuBuilder from './menu';
+
+import MenuBuilder from './main/menu';
+import setupMainIpc from './main/ipc';
 
 export default class AppUpdater {
   constructor() {
@@ -21,6 +23,8 @@ export default class AppUpdater {
     autoUpdater.checkForUpdatesAndNotify();
   }
 }
+
+process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = 1;
 
 let mainWindow = null;
 
@@ -69,7 +73,8 @@ app.on('ready', async () => {
   mainWindow = new BrowserWindow({
     show: false,
     width: 1024,
-    height: 728
+    height: 768,
+    frame: false
   });
 
   mainWindow.loadURL(`file://${__dirname}/app.html`);
@@ -92,10 +97,12 @@ app.on('ready', async () => {
     mainWindow = null;
   });
 
+  setupMainIpc(mainWindow);
+
   const menuBuilder = new MenuBuilder(mainWindow);
-  menuBuilder.buildMenu();
+  menuBuilder.buildContextMenu();
 
   // Remove this if your app does not use auto updates
   // eslint-disable-next-line
-  new AppUpdater();
+  // new AppUpdater();
 });

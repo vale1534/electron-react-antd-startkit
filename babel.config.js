@@ -1,7 +1,6 @@
 /* eslint global-require: off */
 
 const developmentEnvironments = ['development', 'test'];
-
 const developmentPlugins = [require('react-hot-loader/babel')];
 
 const productionPlugins = [
@@ -13,11 +12,9 @@ const productionPlugins = [
   require('babel-plugin-transform-react-remove-prop-types')
 ];
 
+// see docs about api at https://babeljs.io/docs/en/config-files#apicache
 module.exports = api => {
-  // see docs about api at https://babeljs.io/docs/en/config-files#apicache
-
   const development = api.env(developmentEnvironments);
-
   return {
     presets: [
       [

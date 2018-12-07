@@ -13,7 +13,7 @@ import CheckNodeEnv from '../internals/scripts/CheckNodeEnv';
 
 CheckNodeEnv('development');
 
-const dist = path.join(__dirname, '..', 'dll');
+const dllPath = path.join(__dirname, '..', 'build', 'dll');
 
 export default merge.smart(baseConfig, {
   context: path.join(__dirname, '..'),
@@ -37,14 +37,14 @@ export default merge.smart(baseConfig, {
 
   output: {
     library: 'renderer',
-    path: dist,
+    path: dllPath,
     filename: '[name].dev.dll.js',
     libraryTarget: 'var'
   },
 
   plugins: [
     new webpack.DllPlugin({
-      path: path.join(dist, '[name].json'),
+      path: path.join(dllPath, '[name].json'),
       name: '[name]'
     }),
 
@@ -65,9 +65,7 @@ export default merge.smart(baseConfig, {
       debug: true,
       options: {
         context: path.join(__dirname, '..', 'app'),
-        output: {
-          path: path.join(__dirname, '..', 'dll')
-        }
+        output: { path: dllPath }
       }
     })
   ]

@@ -20,16 +20,13 @@ CheckNodeEnv('development');
 
 const port = process.env.PORT || 1212;
 const publicPath = `http://localhost:${port}/dist`;
-const dll = path.join(__dirname, '..', 'dll');
-const manifest = path.resolve(dll, 'renderer.json');
+const dllPath = path.join(__dirname, '..', 'build', 'dll');
+const manifest = path.resolve(dllPath, 'renderer.json');
 const requiredByDLLConfig = module.parent.filename.includes(
   'webpack.config.renderer.dev.dll'
 );
 
-/**
- * Warn if the DLL is not built
- */
-if (!requiredByDLLConfig && !(fs.existsSync(dll) && fs.existsSync(manifest))) {
+if (!requiredByDLLConfig && !(fs.existsSync(dllPath) && fs.existsSync(manifest))) {
   console.log(
     chalk.black.bgYellow.bold(
       'The DLL files are missing. Sit back while we build them for you with "yarn build-dll"'
@@ -40,10 +37,8 @@ if (!requiredByDLLConfig && !(fs.existsSync(dll) && fs.existsSync(manifest))) {
 
 export default merge.smart(baseConfig, {
   devtool: 'inline-source-map',
-
-  mode: 'development',
-
   target: 'electron-renderer',
+  mode: 'development',
 
   entry: [
     'react-hot-loader/patch',
@@ -200,7 +195,7 @@ export default merge.smart(baseConfig, {
     requiredByDLLConfig
       ? null
       : new webpack.DllReferencePlugin({
-          context: path.join(__dirname, '..', 'dll'),
+          context: dllPath,
           manifest: require(manifest),
           sourceType: 'var'
         }),

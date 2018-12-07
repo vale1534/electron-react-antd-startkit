@@ -6,6 +6,8 @@ import path from 'path';
 import webpack from 'webpack';
 import { dependencies } from '../package.json';
 
+const appPath = path.join(__dirname, '..', 'app');
+
 export default {
   externals: [...Object.keys(dependencies || {})],
 
@@ -25,15 +27,13 @@ export default {
   },
 
   output: {
-    path: path.join(__dirname, '..', 'app'),
+    path: appPath,
     // https://github.com/webpack/webpack/issues/1114
     libraryTarget: 'commonjs2'
   },
 
-  /**
-   * Determine the array of extensions that should be used to resolve modules.
-   */
   resolve: {
+    modules: [appPath, 'node_modules'],
     extensions: ['.js', '.jsx', '.json']
   },
 
@@ -41,7 +41,6 @@ export default {
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'production'
     }),
-
     new webpack.NamedModulesPlugin()
   ]
 };

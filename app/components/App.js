@@ -1,18 +1,35 @@
-import React from 'react';
-import { Provider } from 'react-redux';
-import { ConnectedRouter } from 'connected-react-router';
+import React, { Component } from 'react';
+import { ThemeProvider } from 'styled-components';
 
-import { store, history } from '../store';
-import MainLayout from './MainLayout';
+import themeMap from './themes/themeMap';
+import ipc from '../common/emiters';
+import { kMsgUpdateTheme } from '../common/defs';
 
-function App() {
-  return (
-    <Provider store={store}>
-      <ConnectedRouter history={history}>
+import MainLayout from './layout/MainLayout';
+
+class App extends Component {
+  state = { theme: 'light' };
+
+  componentDidMount() {
+    ipc.addListener(kMsgUpdateTheme, this.onUpdateTheme);
+  }
+
+  componentWillUnmount() {
+    ipc.removeListener(kMsgUpdateTheme, this.onUpdateTheme);
+  }
+
+  onUpdateTheme = theme => {
+    this.setState({ theme });
+  };
+
+  render() {
+    const { theme } = this.state;
+    return (
+      <ThemeProvider theme={themeMap[theme]}>
         <MainLayout />
-      </ConnectedRouter>
-    </Provider>
-  );
+      </ThemeProvider>
+    );
+  }
 }
 
 export default App;

@@ -10,6 +10,13 @@
     "node": true,
     "jest/globals": true
   },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "moduleDirectory": ["node_modules", "app/"]
+      }
+    }
+  },
   "rules": {
     "class-methods-use-this": "off",
     "import/order": "off",
